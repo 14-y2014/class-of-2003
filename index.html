@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>六年级毕业纪念 · 我们的时光</title>
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 50%, #ff9a5f 100%);
+            min-height: 100vh;
+            padding: 30px 20px;
+            position: relative;
+        }
+        
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 30%, rgba(255,215,150,0.4) 0%, transparent 60%),
+                        radial-gradient(circle at 80% 70%, rgba(255,160,80,0.3) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .glass {
+            background: rgba(255, 245, 220, 0.2);
+            backdrop-filter: blur(15px) saturate(180%);
+            -webkit-backdrop-filter: blur(15px) saturate(180%);
+            border: 1px solid rgba(255, 200, 120, 0.4);
+            border-radius: 28px;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.2), 
+                        inset 0 0 20px rgba(255, 230, 170, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .glass::after {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -30%;
+            width: 160%;
+            height: 200%;
+            background: linear-gradient(
+                135deg,
+                rgba(255, 245, 200, 0) 0%,
+                rgba(255, 235, 180, 0.1) 30%,
+                rgba(255, 220, 140, 0.2) 50%,
+                rgba(255, 210, 120, 0.1) 70%,
+                rgba(255, 200, 100, 0) 100%
+            );
+            transform: rotate(25deg);
+            pointer-events: none;
+        }
+
+        .header {
+            padding: 45px 50px;
+            margin: 10px 0 35px;
+            position: relative;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 3.2em;
+            font-weight: 300;
+            letter-spacing: -0.02em;
+            color: #b3410e;
+            text-shadow: 3px 3px 6px rgba(255,215,150,0.8);
+            margin-bottom: 12px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .header p {
+            font-size: 1.45em;
+            color: #c7511f;
+            text-shadow: 1px 1px 2px rgba(255,235,180,0.7);
+            position: relative;
+            z-index: 2;
+        }
+
+        .nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px 20px;
+            padding: 12px 20px;
+            margin: 30px 0 45px;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .nav a {
+            color: #b54312;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: 500;
+            padding: 10px 22px;
+            border-radius: 50px;
+            background: rgba(255, 225, 170, 0.3);
+            border: 1px solid rgba(255, 200, 100, 0.6);
+            transition: all 0.2s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            backdrop-filter: blur(5px);
+        }
+
+        .nav a:hover {
+            background: rgba(255, 210, 130, 0.5);
+            border-color: #ffaa66;
+            color: #8b3a0c;
+            transform: translateY(-2px);
+        }
+
+        .feature-card {
+            padding: 40px 45px;
+            margin: 45px 0 55px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .feature-text {
+            flex: 1;
+            min-width: 280px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .feature-text h2 {
+            font-size: 2.4em;
+            font-weight: 300;
+            color: #b3410e;
+            margin-bottom: 15px;
+            letter-spacing: -0.01em;
+            text-shadow: 1px 1px 3px rgba(255,200,120,0.6);
+        }
+
+        .feature-text p {
+            font-size: 1.2em;
+            color: #b34a1c;
+            margin-bottom: 25px;
+            line-height: 1.6;
+            text-shadow: 1px 1px 2px rgba(255,235,180,0.5);
+        }
+
+        .feature-btn {
+            background: rgba(255, 140, 50, 0.4);
+            color: #6b2f08;
+            border: 1px solid rgba(255, 180, 70, 0.7);
+            padding: 14px 42px;
+            border-radius: 60px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            backdrop-filter: blur(5px);
+            transition: all 0.2s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0);
+            text-shadow: 0 1px 2px rgba(255,215,140,0.5);
+        }
+
+        .feature-btn:hover {
+            background: rgba(255, 120, 30, 0.55);
+            border-color: #ffb347;
+            transform: translateY(-2px);
+        }
+
+        .feature-icon {
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 220, 150, 0.25);
+            border: 1px solid rgba(255, 190, 80, 0.5);
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4.5em;
+            color: #d95b1a;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.15), inset 0 0 20px rgba(255,200,100,0.4);
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-title {
+            font-size: 2.2em;
+            font-weight: 300;
+            color: #b3410e;
+            margin: 55px 0 25px;
+            letter-spacing: -0.01em;
+            padding-left: 15px;
+            border-left: 6px solid #f2802e;
+            text-shadow: 1px 1px 3px rgba(255,200,100,0.5);
+            position: relative;
+            z-index: 2;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin: 30px 0 45px;
+            position: relative;
+            z-index: 2;
+        }
+
+        @media (max-width: 900px) {
+            .card-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 600px) {
+            .card-grid { grid-template-columns: 1fr; }
+        }
+
+        .card {
+            padding: 30px;
+            transition: all 0.25s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            position: relative;
+            z-index: 2;
+            background: rgba(255, 235, 190, 0.15);
+            backdrop-filter: blur(8px);
+            border-radius: 28px;
+            border: 1px solid rgba(255, 180, 70, 0.4);
+        }
+
+        .card:hover {
+            background: rgba(255, 220, 140, 0.3);
+            border-color: #ffb86b;
+            transform: translateY(-4px);
+        }
+
+        .card-icon {
+            width: 55px;
+            height: 55px;
+            background: rgba(255, 200, 100, 0.3);
+            border: 1px solid rgba(255, 180, 80, 0.6);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            color: #c75319;
+            backdrop-filter: blur(5px);
+        }
+
+        .card h3 {
+            font-size: 1.6em;
+            font-weight: 400;
+            color: #a53f12;
+        }
+
+        .card p {
+            color: #b84d20;
+            line-height: 1.6;
+            font-size: 1.05em;
+        }
+
+        .download-card {
+            padding: 30px;
+            transition: all 0.25s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            position: relative;
+            z-index: 2;
+            background: rgba(255, 235, 190, 0.15);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 180, 70, 0.5);
+            border-radius: 28px;
+        }
+
+        .download-card:hover {
+            background: rgba(255, 220, 140, 0.3);
+            border-color: #ffb86b;
+            transform: translateY(-4px);
+        }
+
+        .download-card .card-icon {
+            width: 55px;
+            height: 55px;
+            background: rgba(255, 200, 100, 0.3);
+            border: 1px solid rgba(255, 180, 80, 0.6);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            color: #c75319;
+        }
+
+        .download-card h3 {
+            font-size: 1.6em;
+            font-weight: 400;
+            color: #a53f12;
+            margin: 0;
+        }
+
+        .download-card p {
+            color: #b84d20;
+            line-height: 1.6;
+            font-size: 1.05em;
+            margin: 0;
+        }
+
+        .download-card .meta {
+            color: #c95f2a;
+            font-size: 0.9em;
+            background: rgba(255, 200, 110, 0.2);
+            padding: 10px 12px;
+            border-radius: 16px;
+            border-left: 3px solid #f68b2e;
+        }
+
+        .download-link {
+            background: rgba(255, 180, 70, 0.35);
+            color: #943f14;
+            text-decoration: none;
+            padding: 10px 22px;
+            border-radius: 40px;
+            display: inline-block;
+            width: fit-content;
+            border: 1px solid rgba(255, 190, 70, 0.7);
+            transition: all 0.2s;
+            font-weight: 500;
+            backdrop-filter: blur(5px);
+            margin-top: 10px;
+        }
+
+        .download-link:hover {
+            background: rgba(255, 150, 50, 0.55);
+            border-color: #ffaa55;
+            color: #632d0a;
+            transform: translateY(-2px);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px 40px 30px;
+            margin-top: 80px;
+            color: #b3410e;
+            position: relative;
+            z-index: 2;
+            background: rgba(255, 235, 190, 0.2);
+            backdrop-filter: blur(8px);
+            border-radius: 28px;
+        }
+
+        .footer p {
+            margin: 5px 0;
+            font-size: 1.1em;
+            text-shadow: 1px 1px 2px rgba(255,200,100,0.4);
+        }
+
+        .footer a {
+            color: #d45e1e;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .footer a:hover {
+            color: #a53a08;
+            text-decoration: underline;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin: 30px 0 15px;
+        }
+
+        .footer-links a {
+            background: rgba(255, 200, 100, 0.3);
+            padding: 8px 25px;
+            border-radius: 40px;
+            border: 1px solid rgba(255, 180, 70, 0.6);
+            color: #b3410e;
+            font-weight: 500;
+            backdrop-filter: blur(5px);
+        }
+
+        .footer-links a:hover {
+            background: rgba(255, 170, 70, 0.5);
+            text-decoration: none;
+            color: #752f09;
+        }
+
+        .countdown-card {
+            background: rgba(255, 220, 150, 0.3);
+            backdrop-filter: blur(10px);
+            border-radius: 40px;
+            padding: 25px 30px;
+            margin: 40px 0 30px;
+            text-align: center;
+            border: 1px solid rgba(255, 180, 70, 0.6);
+        }
+        .countdown-title {
+            font-size: 1.9em;
+            color: #c04a12;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        .countdown-timer {
+            font-size: 2.8em;
+            font-weight: bold;
+            font-family: monospace;
+            letter-spacing: 4px;
+            background: rgba(255, 130, 40, 0.2);
+            display: inline-block;
+            padding: 15px 30px;
+            border-radius: 70px;
+            backdrop-filter: blur(4px);
+            color: #a53f10;
+            border: 1px solid #ffb154;
+        }
+        .countdown-note {
+            margin-top: 15px;
+            font-size: 1.1em;
+            color: #bd551f;
+        }
+
+        .visit-count {
+            margin: 25px auto;
+            font-size: 1.2em;
+            color: #b3410e;
+            background: rgba(255, 200, 100, 0.3);
+            padding: 14px 28px;
+            border-radius: 60px;
+            display: inline-block;
+            border: 1px solid rgba(255, 180, 70, 0.7);
+            backdrop-filter: blur(8px);
+            font-weight: 500;
+        }
+
+        @media (max-width: 700px) {
+            .header h1 { font-size: 2.3em; }
+            .header { padding: 35px 25px; }
+            .feature-card { flex-direction: column; text-align: center; }
+            .feature-icon { width: 150px; height: 150px; font-size: 3.5em; }
+            .countdown-timer { font-size: 1.8em; padding: 10px 18px; }
+        }
+
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+        }
+        .modal-content {
+            max-width: 500px;
+            width: 90%;
+            padding: 40px 30px;
+            background: rgba(255, 235, 190, 0.9);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 180, 70, 0.6);
+            border-radius: 40px;
+            color: #b3410e;
+            text-align: center;
+        }
+        .modal-content h2 { font-size: 2em; margin-bottom: 20px; color: #b3410e; }
+        .modal-content p { font-size: 1.3em; line-height: 2; }
+        .modal-btn {
+            background: rgba(255, 140, 50, 0.4);
+            color: #943f14;
+            border: 1px solid #ffaa55;
+            border-radius: 60px;
+            cursor: pointer;
+            padding: 12px 40px;
+            font-size: 1.2em;
+            margin-top: 30px;
+            font-weight: bold;
+        }
+        .modal-btn:hover {
+            background: rgba(255, 120, 30, 0.6);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header glass">
+        <h1>无锡市扬名滨河小学2020级3班毕业纪念 · 我们的时光</h1>
+        <p>小学六年，匆匆一瞥；从懵懂到少年，感谢相遇</p>
+    </div>
+
+    <div class="countdown-card">
+        <div class="countdown-title">每年'少羽班'同学群成立日：3月27日倒计时</div>
+        <div class="countdown-timer" id="countdownDisplay">— 计算中 —</div>
+        <div class="countdown-note">⭐ 每一年的这一天，都是我们共同怀念的日子 ⭐</div>
+    </div>
+
+    <div class="nav glass">
+        <a href="#">🏠 首页</a>
+        <a href="#memory">📸 回忆相册</a>
+        <a href="#words">📝 毕业寄语</a>
+        <a href="#about">❤️ 关于我们</a>
+    </div>
+
+    <div class="feature-card glass">
+        <div class="feature-text">
+            <h2>🍃 六年 · 最好的我们</h2>
+            <p>从“a o e”到“ABCD”，从歪歪扭扭的字迹到工整的作文。<br>
+            那些一起在操场奔跑的日子，一起在走廊分享零食的课间，都成了记忆里最柔软的光。<br>
+            毕业不是终点，而是新的开始。愿我们永远保持热爱，奔赴山海。</p>
+        </div>
+        <div class="feature-icon">🎓✨</div>
+    </div>
+
+    <div class="section-title" id="memory">📸 青春纪念册 · 那些闪亮的日子</div>
+    <div class="card-grid">
+        <div class="card glass">
+            <div class="card-icon">我们的校园</div>
+            <img src="1.png" alt=" " style="width:100%; border-radius: 20px; margin: 10px 0; box-shadow: 0 8px 20px rgba(0,0,0,0.1);">
+        </div>
+        <div class="card glass">
+            <div class="card-icon">班主任</div>
+            <img src="2.png" alt=" " style="width:100%; border-radius: 20px; margin: 10px 0; box-shadow: 0 8px 20px rgba(0,0,0,0.1);">
+        </div>
+        <div class="card glass">
+            <div class="card-icon">同学签名</div>
+            <img src="3.png" alt=" " style="width:100%; border-radius: 20px; margin: 10px 0; box-shadow: 0 8px 20px rgba(0,0,0,0.1);">
+        </div>
+    </div>
+
+    <div class="section-title" id="words">📝 毕业留言板</div>
+    <div class="card-grid">
+        <div class="card glass">
+            <div class="card-icon">💬</div>
+            <h3>班主任寄语</h3>
+            <p>“你们是我带过最调皮也最温暖的一届，愿未来星途璀璨，归来仍是少年。”</p>
+        </div>
+        <div class="card glass">
+            <div class="card-icon">❤️</div>
+            <h3>同学说</h3>
+            <p>“希望十年后我们还能像今天一样，大笑大闹，一个电话就能见面。”</p>
+        </div>
+        <div class="card glass">
+            <div class="card-icon">🌟</div>
+            <h3>写给未来</h3>
+            <p>保持好奇，保持善良，别忘记我们曾是六（3）班的一员。</p>
+        </div>
+    </div>
+
+    <div class="footer glass" id="about">
+        <p>小学六年级毕业纪念</p>
+        <p onclick="showAbout()" style="cursor: pointer; margin: 5px 0;">戳我 查看网站背后的故事</p>
+        <p>© 六年级（3）班全体同学 · 纪念永不毕业的童年</p>
+        <p>https://14-y2014.github.io/class-of-2003/</p>
+        <div class="visit-count">
+            <span id="visit-count">加载中...</span>
+        </div>
+        <div class="footer-links">
+            <a href="#">↑ 回到顶部</a>
+        </div>
+    </div>
+</div>
+
+<div id="aboutModal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <h2>🎓 关于 毕业纪念网站</h2>
+        <p><strong>网站版本</strong>：毕业纪念 1.0.0</p>
+        <p><strong>"少羽班"纪念日</strong>：每年3月27日</p>
+        <p><strong>策划/设计</strong>：六年级（3）班全体同学</p>
+        <p><strong>一句话</strong>：愿我们前程似锦，顶峰相见。</p>
+        <button onclick="closeAbout()" class="modal-btn">关 闭</button>
+    </div>
+</div>
+
+<script>
+    function updateGraduationCountdown() {
+        const now = new Date();
+        const currentYear = now.getFullYear();
+        let targetDate = new Date(currentYear, 2, 27);
+        if (now > targetDate) {
+            targetDate = new Date(currentYear + 1, 2, 27);
+        }
+        const diffMs = targetDate - now;
+        if (diffMs <= 0) {
+            document.getElementById('countdownDisplay').innerHTML = " 今天就是3月27日！'少羽班'成立快乐 🎉";
+            return;
+        }
+        const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diffMs % (86400000)) / (3600000));
+        const minutes = Math.floor((diffMs % 3600000) / 60000);
+        const seconds = Math.floor((diffMs % 60000) / 1000);
+        document.getElementById('countdownDisplay').innerHTML = `${days}天 ${hours}小时 ${minutes}分 ${seconds}秒`;
+    }
+    setInterval(updateGraduationCountdown, 1000);
+    updateGraduationCountdown();
+
+    (function() {
+        let count = localStorage.getItem('graduationVisit');
+        count = count ? parseInt(count) + 1 : 1;
+        localStorage.setItem('graduationVisit', count);
+        document.getElementById('visit-count').textContent = `你来过 ${count} 次`;
+    })();
+
+    function showAbout() {
+        document.getElementById('aboutModal').style.display = 'flex';
+    }
+    function closeAbout() {
+        document.getElementById('aboutModal').style.display = 'none';
+    }
+    window.onclick = function(event) {
+        let modal = document.getElementById('aboutModal');
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+</script>
+</body>
+</html>
